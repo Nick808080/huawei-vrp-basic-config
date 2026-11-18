@@ -1,4 +1,3 @@
-Markdown
 # Базовая инициализация и настройка маршрутизатора Huawei (VRP)
 
 ## Описание проекта
@@ -37,10 +36,12 @@ BKP 0 version information:
 Enter system view, return user view with Ctrl+Z.
 [Huawei] sysname Datacom-Router
 [Datacom-Router]
-2. Использование системы контекстной справки
-В режиме конфигурирования интерфейса (GigabitEthernet 0/0/1) была вызвана справка ? для просмотра доступных команд, а затем ip ? для уточнения параметров IP-адресации.
+```
 
-Plaintext
+### 2. Использование системы контекстной справки
+В режиме конфигурирования интерфейса (`GigabitEthernet 0/0/1`) была вызвана справка `?` для просмотра доступных команд, а затем `ip ?` для уточнения параметров IP-адресации.
+
+```text
 [Datacom-Router-GigabitEthernet0/0/1] ip ?
   accounting           <Group> accounting command group
   address              <Group> address command group
@@ -49,11 +50,13 @@ Plaintext
 [Datacom-Router-GigabitEthernet0/0/1] ip address 192.168.1.1 24 ?
   sub      Indicate a subordinate address
   <cr>     Please press ENTER to execute command
-3. Настройка IP, обработка ошибок и проверка конфигурации
-Адрес 192.168.1.1/24 был изначально назначен на интерфейс G0/0/1. Настройки были проверены командой display this.
-Затем конфигурация была отменена с помощью undo ip address (при вводе была допущена синтаксическая ошибка udno, которая была корректно обработана CLI) и перенесена на нужный интерфейс G0/0/2.
+```
 
-Plaintext
+### 3. Настройка IP, обработка ошибок и проверка конфигурации
+Адрес `192.168.1.1/24` был изначально назначен на интерфейс `G0/0/1`. Настройки были проверены командой `display this`. 
+Затем конфигурация была отменена с помощью `undo ip address` (при вводе была допущена синтаксическая ошибка `udno`, которая была корректно обработана CLI) и перенесена на нужный интерфейс `G0/0/2`.
+
+```text
 [Datacom-Router-GigabitEthernet0/0/1] ip address 192.168.1.1 24
 [Datacom-Router-GigabitEthernet0/0/1] display this
 [V200R003C00]
@@ -78,3 +81,4 @@ interface GigabitEthernet0/0/2
  ip address 192.168.1.1 255.255.255.0
 #
 return
+```
